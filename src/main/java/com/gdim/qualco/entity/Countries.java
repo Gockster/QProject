@@ -1,12 +1,17 @@
 package com.gdim.qualco.entity;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +40,16 @@ public class Countries {
 	
 	@Column(name = "region_id")
 	private int region_id;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
+	private Set<CountryLanguages> countryLanguages;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "countrys")
+	private Set<CountryStats> countryStats;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "region_id", insertable=false, updatable=false)
+	private Regions regions;
 
 	public int getCountry_id() {
 		return country_id;
@@ -91,7 +106,33 @@ public class Countries {
 	public void setRegion_id(int region_id) {
 		this.region_id = region_id;
 	}
+
+//	public Set<CountryLanguages> getCountryLanguages() {
+//		return countryLanguages;
+//	}
+//
+//	public void setCountryLanguages(Set<CountryLanguages> countryLanguages) {
+//		this.countryLanguages = countryLanguages;
+//	}
+
+//	public Set<CountryStats> getCountryStats() {
+//		return countryStats;
+//	}
+//
+//	public void setCountryStats(Set<CountryStats> countryStats) {
+//		this.countryStats = countryStats;
+//	}
+//
+//	public Regions getRegions() {
+//		return regions;
+//	}
+//
+//	public void setRegions(Regions regions) {
+//		this.regions = regions;
+//	}
 	
+	
+
 	
 	
 	

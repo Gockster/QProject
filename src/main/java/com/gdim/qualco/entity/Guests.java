@@ -11,7 +11,6 @@ import lombok.Data;
 
 @Entity
 @Table(name = "guests")
-@Data
 public class Guests {
 	
 	@Id
@@ -21,5 +20,23 @@ public class Guests {
 	
 	@Column(name = "name")
 	private String name;
+
+	public int getGuest_id() {
+		return guest_id;
+	}
+
+	public void setGuest_id(int guest_id) {
+		this.guest_id = guest_id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 
 }

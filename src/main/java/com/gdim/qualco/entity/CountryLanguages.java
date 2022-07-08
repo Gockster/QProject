@@ -27,6 +27,10 @@ public class CountryLanguages {
 	@ManyToOne(optional=false)
 	@JoinColumn(name = "language_id", insertable=false, updatable=false)
 	private Languages language;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "country_id", insertable=false, updatable=false)
+	private Countries country;
 
 	public int getCountry_id() {
 		return country_id;
@@ -58,6 +62,14 @@ public class CountryLanguages {
 
 	public void setLanguage(Languages language) {
 		this.language = language;
+	}
+
+	public Countries getCountry() {
+		return country;
+	}
+
+	public void setCountry(Countries country) {
+		this.country = country;
 	}
 	
 	

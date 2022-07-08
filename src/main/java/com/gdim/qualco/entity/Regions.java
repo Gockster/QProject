@@ -1,5 +1,8 @@
 package com.gdim.qualco.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -23,6 +27,9 @@ public class Regions {
 	@ManyToOne(optional=false)
 	@JoinColumn(name = "continent_id", insertable=false, updatable=false)
 	private Continents continent;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "regions")
+	private Set<Countries> countries;
 	
 	@Column(name = "name")
 	private String regionName;

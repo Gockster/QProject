@@ -3,6 +3,8 @@ package com.gdim.qualco.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,10 @@ public class CountryStats {
 	
 	@Column(name = "country_id")
 	private int country_id;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "country_id", insertable=false, updatable=false)
+	private Countries countrys;
 
 	public int getYear() {
 		return year;
@@ -52,6 +58,14 @@ public class CountryStats {
 
 	public void setCountry_id(int country_id) {
 		this.country_id = country_id;
+	}
+
+	public Countries getCountry() {
+		return countrys;
+	}
+
+	public void setCountry(Countries country) {
+		this.countrys = country;
 	}
 	
 	

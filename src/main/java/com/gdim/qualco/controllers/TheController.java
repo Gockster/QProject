@@ -12,12 +12,14 @@ import com.gdim.qualco.dao.CountryLanguagesRepository;
 import com.gdim.qualco.dao.CountryStatsRepository;
 import com.gdim.qualco.dao.GuestsRepository;
 import com.gdim.qualco.dao.LanguagesRepository;
+import com.gdim.qualco.dao.RegionAreasRepository;
 import com.gdim.qualco.dao.RegionsRepository;
 import com.gdim.qualco.entity.Continents;
 import com.gdim.qualco.entity.CountryLanguages;
 import com.gdim.qualco.entity.CountryStats;
 import com.gdim.qualco.entity.Guests;
 import com.gdim.qualco.entity.Languages;
+import com.gdim.qualco.entity.RegionAreas;
 import com.gdim.qualco.entity.Regions;
 
 @RestController
@@ -41,7 +43,9 @@ public class TheController {
 	
 	@Autowired
 	LanguagesRepository lar;
-
+	
+	@Autowired
+	RegionAreasRepository rr;
 	
 	@GetMapping("/continents")
 	public List<Continents> getContinents() {
@@ -63,7 +67,7 @@ public class TheController {
 		return cor.findAll();
 	}
 	
-	@GetMapping("/con-languages")
+	@GetMapping("/country-languages")
 	public List<CountryLanguages> getLans() {
 		return cla.findAll();
 	}
@@ -73,9 +77,10 @@ public class TheController {
 		return lar.findAll();
 	}
 	
-	
-
-	
+	@GetMapping("/areas")
+	public List<RegionAreas> getAreas() {
+		return rr.findAll();
+	}
 	
 	
 
